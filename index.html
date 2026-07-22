@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STOGRA STORE | Aset Roblox Studio Premium</title>
     <style>
-        /* Gaya Dasar & Latar Belakang Kotak-Kotak v0 */
+        /* Gaya Dasar & Latar Belakang Kotak-Kotak Grid */
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #0b0f19;
             background-image: 
-                linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
             color: #94a3b8;
             margin: 0;
@@ -116,7 +116,7 @@
             margin-bottom: 80px;
         }
         .card {
-            background-color: rgba(15, 23, 42, 0.4);
+            background-color: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(51, 65, 85, 0.8);
             border-radius: 16px;
             padding: 24px;
@@ -124,6 +124,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            backdrop-filter: blur(5px);
         }
         .price-tag {
             position: absolute;
@@ -145,6 +146,7 @@
             margin-bottom: 20px;
             background-size: cover;
             background-position: center;
+            background-color: #020617;
         }
         .card h3 {
             color: #ffffff;
@@ -179,11 +181,12 @@
 
         /* Jasa & Layanan Studio */
         .jasa-box {
-            background-color: rgba(15, 23, 42, 0.4);
+            background-color: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(51, 65, 85, 0.8);
             border-radius: 16px;
             padding: 30px;
             margin-bottom: 80px;
+            backdrop-filter: blur(5px);
         }
         .jasa-header {
             color: #ffffff;
@@ -250,13 +253,13 @@
         }
     </style>
     <script>
-        /* Fungsi Pintar Deteksi Aplikasi & Web Discord Secara Otomatis */
+        /* Fungsi Otomatis Buka Aplikasi Discord */
         function openDiscordInvite(event) {
             event.preventDefault();
             var inviteCode = "beR9U8Hzk"; 
             
             var discordAppUrl = "discord://://discord.com" + inviteCode;
-            var discordWebUrl = "https://discord.gg/" + inviteCode;
+            var discordWebUrl = "https://discord.gg" + inviteCode;
             
             var start = Date.now();
             window.location.href = discordAppUrl;
@@ -307,7 +310,3 @@
                 <h3>👕 Seragam</h3>
                 <div class="sub">Custom Uniforms</div>
                 <div class="desc">Pakaian dinas faksi (Polisi, TNI, Medis) dengan tekstur HD.</div>
-                <a href="#" onclick="openDiscordInvite(event)" class="btn-buy">Beli Sekarang</a>
-            </div>
-
-            <!-- 3. System -->
