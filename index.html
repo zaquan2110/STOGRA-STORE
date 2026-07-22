@@ -4,138 +4,310 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STOGRA STORE | Aset Roblox Studio Premium</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://tailwindcss.com"></script>
-    <!-- Google Fonts untuk font modern -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com"></script>
     <style>
+        /* Gaya Dasar & Latar Belakang Kotak-Kotak v0 */
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #0b0f19;
             background-image: 
                 linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
             background-size: 40px 40px;
+            color: #94a3b8;
+            margin: 0;
+            padding: 0;
             scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Tombol Utama */
+        .btn-white {
+            background-color: #ffffff;
+            color: #0f172a;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .btn-white:hover { background-color: #e2e8f0; }
+        
+        .btn-dark {
+            background-color: rgba(30, 41, 59, 0.6);
+            color: #ffffff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            border: 1px solid #334155;
+            display: inline-block;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .btn-dark:hover { background-color: #334155; }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .badge {
+            background-color: rgba(15, 23, 42, 0.8);
+            border: 1px solid #1e293b;
+            color: #94a3b8;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            color: #ffffff;
+            font-size: 64px;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.1;
+            letter-spacing: 2px;
+        }
+        .hero h1 span {
+            color: #64748b;
+        }
+        .hero p {
+            font-size: 16px;
+            max-width: 500px;
+            margin: 20px auto 40px auto;
+            line-height: 1.6;
+        }
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Katalog Grid */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 40px;
+        }
+        .section-title p {
+            color: #818cf8;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        .section-title h2 {
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        .card {
+            background-color: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .price-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(2, 6, 23, 0.8);
+            border: 1px solid #334155;
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .image-placeholder {
+            height: 160px;
+            background-color: #020617;
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            color: #ffffff;
+            font-size: 18px;
+            margin: 0 0 4px 0;
+        }
+        .card .sub {
+            font-size: 11px;
+            color: #475569;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .card .desc {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+        .card .btn-buy {
+            background-color: #ffffff;
+            color: #020617;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+        .card .btn-buy:hover { background-color: #e2e8f0; }
+
+        /* Jasa & Layanan Studio */
+        .jasa-box {
+            background-color: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 80px;
+        }
+        .jasa-header {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+        }
+        .jasa-desc {
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .jasa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            border-top: 1px solid rgba(51, 65, 85, 0.6);
+            padding-top: 24px;
+        }
+        .jasa-title {
+            color: #818cf8;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .jasa-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .jasa-list li {
+            font-size: 14px;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .jasa-list li::before {
+            content: "•";
+            color: #6366f1;
+            font-weight: bold;
+            display: inline-block; 
+            width: 15px;
+        }
+        .jasa-list.harga li {
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+            padding-bottom: 8px;
+        }
+        .jasa-list.harga li::before { content: none; }
+        .jasa-list .label-harga {
+            background-color: #020617;
+            color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .jasa-footer {
+            text-align: center;
+            border-top: 1px solid rgba(51, 65, 85, 0.6);
+            padding-top: 30px;
+            margin-top: 40px;
         }
     </style>
 </head>
-<body class="text-slate-300 min-h-screen flex flex-col justify-between">
+<body>
 
-    <!-- ================= HERO SECTION ================= -->
-    <main class="min-h-screen flex flex-col items-center justify-center text-center px-4 select-none">
-        <!-- Badge Atas -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-800 bg-slate-900/80 text-xs font-medium text-slate-400 mb-8 backdrop-blur-sm shadow-xl">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-400"></i>
-            <span>Aset Roblox Studio Premium</span>
+    <div class="container">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="badge">✨ Aset Roblox Studio Premium</div>
+            <h1>STOGRA<br><span>STORE</span></h1>
+            <p>Menyediakan Layanan Instan dan Aset Roblox Premium yang Pas di Dompet!</p>
+            <div class="hero-buttons">
+                <a href="#katalog" class="btn-white">Lihat Katalog ↓</a>
+                <a href="https://discord.com" target="_blank" class="btn-dark">Join Discord</a>
+            </div>
+        </section>
+
+        <!-- KATALOG SECTION -->
+        <div class="section-title" id="katalog">
+            <p>Katalog Produk</p>
+            <h2>Aset Siap Pakai</h2>
         </div>
 
-        <!-- Judul Besar -->
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-wider text-white uppercase leading-none mb-6">
-            STOGRA<br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500">STORE</span>
-        </h1>
-
-        <!-- Deskripsi -->
-        <p class="text-slate-400 max-w-xl text-sm md:text-base font-normal tracking-wide leading-relaxed mb-10">
-            Menyediakan Layanan Instan dan Aset Roblox Premium yang Pas di Dompet!
-        </p>
-
-        <!-- Tombol Aksi -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-xs sm:max-w-none">
-            <a href="#katalog" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-slate-950 font-semibold px-6 py-3 rounded-xl hover:bg-slate-200 transition-all duration-200 shadow-lg active:scale-95 text-sm">
-                <span>Lihat Katalog</span>
-                <i data-lucide="arrow-down" class="w-4 h-4"></i>
-            </a>
-            <a href="https://discord.com" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center bg-slate-900/60 text-white font-medium px-6 py-3 rounded-xl border border-slate-800 hover:bg-slate-800/80 hover:border-slate-700 transition-all duration-200 active:scale-95 text-sm">
-                Join Discord
-            </a>
-        </div>
-    </main>
-
-    <!-- ================= KATALOG PRODUK SECTION ================= -->
-    <section id="katalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-900/50 w-full">
-        <div class="text-center mb-16">
-            <p class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-2">Katalog Produk</p>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">Aset Siap Pakai</h2>
-            <p class="text-slate-500 text-sm mt-2">Lima kategori aset premium untuk game roleplay-mu.</p>
-        </div>
-
-        <!-- Grid Kartu Produk -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid">
             <!-- 1. Kendaraan -->
-            <div class="bg-slate-900/40 rounded-2xl border border-slate-800/80 p-5 backdrop-blur-md flex flex-col justify-between relative overflow-hidden shadow-xl">
-                <div>
-                    <div class="absolute top-4 right-4 bg-slate-950/80 border border-slate-800 text-xs font-semibold px-2.5 py-1 rounded-md text-white">R$ 500</div>
-                    <div class="w-full h-44 rounded-xl bg-slate-950 mb-5 overflow-hidden flex items-center justify-center border border-slate-800/50">
-                        <i data-lucide="car" class="w-12 h-12 text-slate-800"></i>
-                    </div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <i data-lucide="car" class="w-4 h-4 text-indigo-400"></i>
-                        <span class="text-sm font-bold text-white">Kendaraan</span>
-                    </div>
-                    <p class="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-3">Vehicle Pack</p>
-                    <p class="text-xs text-slate-400 leading-relaxed mb-6">Mobil polisi, ambulans, dan mobil sipil dengan sistem drive realistis.</p>
-                </div>
-                <a href="https://discord.com" target="_blank" class="w-full bg-white text-slate-950 text-center text-xs font-bold py-2.5 rounded-lg hover:bg-slate-200 transition active:scale-98">Beli Sekarang</a>
+            <div class="card">
+                <div class="price-tag">R$ 500</div>
+                <div class="image-placeholder"></div>
+                <h3>🚔 Kendaraan</h3>
+                <div class="sub">Vehicle Pack</div>
+                <div class="desc">Mobil polisi, ambulans, dan mobil sipil dengan sistem drive realistis.</div>
+                <a href="https://discord.com" target="_blank" class="btn-buy">Beli Sekarang</a>
             </div>
 
             <!-- 2. Seragam -->
-            <div class="bg-slate-900/40 rounded-2xl border border-slate-800/80 p-5 backdrop-blur-md flex flex-col justify-between relative overflow-hidden shadow-xl">
-                <div>
-                    <div class="absolute top-4 right-4 bg-slate-950/80 border border-slate-800 text-xs font-semibold px-2.5 py-1 rounded-md text-white">Rp 50.000</div>
-                    <div class="w-full h-44 rounded-xl bg-slate-950 mb-5 overflow-hidden flex items-center justify-center border border-slate-800/50">
-                        <i data-lucide="shirt" class="w-12 h-12 text-slate-800"></i>
-                    </div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <i data-lucide="shirt" class="w-4 h-4 text-indigo-400"></i>
-                        <span class="text-sm font-bold text-white">Seragam</span>
-                    </div>
-                    <p class="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-3">Custom Uniforms</p>
-                    <p class="text-xs text-slate-400 leading-relaxed mb-6">Pakaian dinas faksi (Polisi, TNI, Medis) dengan tekstur HD.</p>
-                </div>
-                <a href="https://discord.com" target="_blank" class="w-full bg-white text-slate-950 text-center text-xs font-bold py-2.5 rounded-lg hover:bg-slate-200 transition active:scale-98">Beli Sekarang</a>
+            <div class="card">
+                <div class="price-tag">Rp 50.000</div>
+                <div class="image-placeholder"></div>
+                <h3>👕 Seragam</h3>
+                <div class="sub">Custom Uniforms</div>
+                <div class="desc">Pakaian dinas faksi (Polisi, TNI, Medis) dengan tekstur HD.</div>
+                <a href="https://discord.com" target="_blank" class="btn-buy">Beli Sekarang</a>
             </div>
 
             <!-- 3. System -->
-            <div class="bg-slate-900/40 rounded-2xl border border-slate-800/80 p-5 backdrop-blur-md flex flex-col justify-between relative overflow-hidden shadow-xl">
-                <div>
-                    <div class="absolute top-4 right-4 bg-slate-950/80 border border-slate-800 text-xs font-semibold px-2.5 py-1 rounded-md text-white">R$ 750</div>
-                    <div class="w-full h-44 rounded-xl bg-slate-950 mb-5 overflow-hidden flex items-center justify-center border border-slate-800/50">
-                        <i data-lucide="terminal" class="w-12 h-12 text-slate-800"></i>
-                    </div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <i data-lucide="terminal" class="w-4 h-4 text-indigo-400"></i>
-                        <span class="text-sm font-bold text-white">System</span>
-                    </div>
-                    <p class="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-3">Script & UI</p>
-                    <p class="text-xs text-slate-400 leading-relaxed mb-6">Sistem login, sistem borgol, leaderboard, dan tim dinas.</p>
-                </div>
-                <a href="https://discord.com" target="_blank" class="w-full bg-white text-slate-950 text-center text-xs font-bold py-2.5 rounded-lg hover:bg-slate-200 transition active:scale-98">Beli Sekarang</a>
+            <div class="card">
+                <div class="price-tag">R$ 750</div>
+                <div class="image-placeholder"></div>
+                <h3>💻 System</h3>
+                <div class="sub">Script & UI</div>
+                <div class="desc">Sistem login, sistem borgol, leaderboard, dan tim dinas.</div>
+                <a href="https://discord.com" target="_blank" class="btn-buy">Beli Sekarang</a>
             </div>
 
             <!-- 4. Strobo -->
-            <div class="bg-slate-900/40 rounded-2xl border border-slate-800/80 p-5 backdrop-blur-md flex flex-col justify-between relative overflow-hidden shadow-xl">
-                <div>
-                    <div class="absolute top-4 right-4 bg-slate-950/80 border border-slate-800 text-xs font-semibold px-2.5 py-1 rounded-md text-white">Rp 35.000</div>
-                    <div class="w-full h-44 rounded-xl bg-slate-950 mb-5 overflow-hidden flex items-center justify-center border border-slate-800/50">
-                        <i data-lucide="siren" class="w-12 h-12 text-slate-800"></i>
-                    </div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <i data-lucide="siren" class="w-4 h-4 text-indigo-400"></i>
-                        <span class="text-sm font-bold text-white">Strobo</span>
-                    </div>
-                    <p class="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-3">Lightbar & Siren</p>
-                    <p class="text-xs text-slate-400 leading-relaxed mb-6">Lampu strobo custom ELS yang berkedip realistis untuk kendaraan darurat.</p>
-                </div>
-                <a href="https://discord.com" target="_blank" class="w-full bg-white text-slate-950 text-center text-xs font-bold py-2.5 rounded-lg hover:bg-slate-200 transition active:scale-98">Beli Sekarang</a>
+            <div class="card">
+                <div class="price-tag">Rp 35.000</div>
+                <div class="image-placeholder"></div>
+                <h3>🚨 Strobo</h3>
+                <div class="sub">Lightbar & Siren</div>
+                <div class="desc">Lampu strobo custom ELS yang berkedip realistis untuk kendaraan darurat.</div>
+                <a href="https://discord.com" target="_blank" class="btn-buy">Beli Sekarang</a>
             </div>
 
             <!-- 5. Map -->
-            <div class="bg-slate-900/40 rounded-2xl border border-slate-800/80 p-5 backdrop-blur-md flex flex-col justify-between relative overflow-hidden shadow-xl">
-                <div>
-                    <div class="absolute top-4 right-4 bg-slate-950/80 border border-slate-800 text-xs font-semibold px-2.5 py-1 rounded-md text-white">R$ 1.200</div>
+            <div class="card">
