@@ -136,13 +136,15 @@
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
+            z-index: 10;
         }
-        .image-placeholder {
+        .image-box {
             height: 160px;
-            background-color: #020617;
             border: 1px solid rgba(51, 65, 85, 0.5);
             border-radius: 12px;
             margin-bottom: 20px;
+            background-size: cover;
+            background-position: center;
         }
         .card h3 {
             color: #ffffff;
@@ -247,6 +249,25 @@
             margin-top: 40px;
         }
     </style>
+    <script>
+        /* Fungsi Pintar Deteksi Aplikasi & Web Discord Secara Otomatis */
+        function openDiscordInvite(event) {
+            event.preventDefault();
+            var inviteCode = "beR9U8Hzk"; 
+            
+            var discordAppUrl = "discord://://discord.com" + inviteCode;
+            var discordWebUrl = "https://discord.gg/" + inviteCode;
+            
+            var start = Date.now();
+            window.location.href = discordAppUrl;
+            
+            setTimeout(function() {
+                if (Date.now() - start < 1500) {
+                    window.open(discordWebUrl, '_blank');
+                }
+            }, 1000);
+        }
+    </script>
 </head>
 <body>
 
@@ -258,7 +279,7 @@
             <p>Menyediakan Layanan Instan dan Aset Roblox Premium yang Pas di Dompet!</p>
             <div class="hero-buttons">
                 <a href="#katalog" class="btn-white">Lihat Katalog ↓</a>
-                <a href="https://discord.com" target="_blank" class="btn-dark">Join Discord</a>
+                <a href="#" onclick="openDiscordInvite(event)" class="btn-dark">Join Discord</a>
             </div>
         </section>
 
@@ -272,42 +293,21 @@
             <!-- 1. Kendaraan -->
             <div class="card">
                 <div class="price-tag">R$ 500</div>
-                <div class="image-placeholder"></div>
+                <div class="image-box" style="background-image: url('https://unsplash.com');"></div>
                 <h3>🚔 Kendaraan</h3>
                 <div class="sub">Vehicle Pack</div>
                 <div class="desc">Mobil polisi, ambulans, dan mobil sipil dengan sistem drive realistis.</div>
-                <a href="https://discord.com" target="_blank" class="btn-buy">Beli Sekarang</a>
+                <a href="#" onclick="openDiscordInvite(event)" class="btn-buy">Beli Sekarang</a>
             </div>
 
             <!-- 2. Seragam -->
             <div class="card">
                 <div class="price-tag">Rp 50.000</div>
-                <div class="image-placeholder"></div>
+                <div class="image-box" style="background-image: url('https://unsplash.com');"></div>
                 <h3>👕 Seragam</h3>
                 <div class="sub">Custom Uniforms</div>
                 <div class="desc">Pakaian dinas faksi (Polisi, TNI, Medis) dengan tekstur HD.</div>
-                <a href="https://discord.com" target="_blank" class="btn-buy">Beli Sekarang</a>
+                <a href="#" onclick="openDiscordInvite(event)" class="btn-buy">Beli Sekarang</a>
             </div>
 
             <!-- 3. System -->
-            <div class="card">
-                <div class="price-tag">R$ 750</div>
-                <div class="image-placeholder"></div>
-                <h3>💻 System</h3>
-                <div class="sub">Script & UI</div>
-                <div class="desc">Sistem login, sistem borgol, leaderboard, dan tim dinas.</div>
-                <a href="https://discord.com" target="_blank" class="btn-buy">Beli Sekarang</a>
-            </div>
-
-            <!-- 4. Strobo -->
-            <div class="card">
-                <div class="price-tag">Rp 35.000</div>
-                <div class="image-placeholder"></div>
-                <h3>🚨 Strobo</h3>
-                <div class="sub">Lightbar & Siren</div>
-                <div class="desc">Lampu strobo custom ELS yang berkedip realistis untuk kendaraan darurat.</div>
-                <a href="https://discord.com" target="_blank" class="btn-buy">Beli Sekarang</a>
-            </div>
-
-            <!-- 5. Map -->
-            <div class="card">
